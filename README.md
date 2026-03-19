@@ -52,7 +52,7 @@ Weight decay is the critical parameter — it creates pressure toward the compac
 - **Grokking** — delayed phase transition after memorization plateau
 - **Stuck** — no generalization within the step budget
 
-![Phase Diagram](grokking_phase_diagram.png)
+<img width="2662" height="742" alt="grokking_phase_diagram" src="https://github.com/user-attachments/assets/e3121d95-77f4-4cdc-9e71-2d3945e24f88" />
 
 ### Results (15,000 steps per run)
 
