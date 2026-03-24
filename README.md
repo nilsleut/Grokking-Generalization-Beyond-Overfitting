@@ -116,6 +116,24 @@ Step   S42-k  S42-val   S43-k  S43-val   S44-k  S44-val   S45-k  S45-val   S46-k
 
 This extends the findings of Nanda et al. (2023), who identified the Fourier circuit but did not characterize the stochastic frequency selection or the two-stage convergence dynamic.
 
+### 5. Sparse Autoencoder Analysis
+ 
+`sae/grokking_sae.py` trains Sparse Autoencoders on the transformer's internal activations to test whether learned Fourier features are mechanistically decomposable — and to quantify how superposition changes across the grokking transition.
+ 
+<img width="1784" height="740" alt="sae_superposition_comparison" src="https://github.com/user-attachments/assets/cf54d2d3-5586-42de-9867-4f8cf2b0ccc6" />
+ 
+**Key findings:**
+ 
+| | Pre-Grokking (Step 1k) | Post-Grokking (Step 15k) |
+|---|---|---|
+| Mean L0 | 290/1024 (28%) | 111/1024 (11%) |
+| Mean Feature Exclusivity | 0.07 | 0.36 |
+| Dedicated features (excl. > 0.5) | 0% | 27% |
+ 
+Grokking reduces active features 3× and increases feature specialization 5×. Pre-grokking features are token-specific lookup mechanisms (memorization). Post-grokking features follow cos(k·(a+b)) patterns in the (a,b) space (Fourier computation). Complete decomposition into one feature per frequency is blocked by superposition — 73% of post-grokking features remain polysemantic, encoding multiple Fourier frequencies simultaneously.
+ 
+See [`sae/README.md`](sae/README.md) for full analysis.
+ 
 ---
 
 ## Files
